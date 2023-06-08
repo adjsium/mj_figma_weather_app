@@ -1,11 +1,18 @@
 .container {
-  max-width: 1080px !important;
-  margin: 20px auto !important;
+  max-width: 680px ;
+  margin: 20px auto ;
+  height: calc(100vh - 60px);
+  background: linear-gradient(195.11deg, #FA817E 13.19%, #242A5E 96.87%);
+  opacity: 0.8;
+  border-radius: 62px;
+  box-shadow: 5px -3px 10px 6px rgb(0 0 0/ 25%);  
 }
-
+.container .searchBar{
+  padding-top: 20px;
+  margin: 0px 20px ;
+}
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
-
  }
  
