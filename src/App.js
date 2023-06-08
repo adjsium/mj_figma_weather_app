@@ -8,7 +8,10 @@ function App() {
   //const string = "Hello World";
   return (
     <div className="App">
-    <Search onSearchChange={handleOnSearchChange}/>
+      <div className="container">
+      <Search onSearchChange={handleOnSearchChange}/>
+      </div>
+    
     </div>
   );
 }

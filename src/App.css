@@ -1,22 +1,11 @@
-.App {
-  max-width: 1080px;
-  margin: 20px auto;
-}
-.Container {
-  max-width: 1080px;
-  margin: 20px auto;
+.container {
+  max-width: 1080px !important;
+  margin: 20px auto !important;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
+
  }
  
- body{
-  position: relative;
-  width: 1512px;
-  height: 982px;
-  background: radial-gradient(100% 237.07% at 100% 0%, #5D6F91 0%, #2B3368 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;  
- }
-
-
