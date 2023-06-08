@@ -5,11 +5,10 @@ function App() {
   const handleOnSearchChange = (searchData) => {
     console.log(searchData);
   }
-  const string = "Hello World";
+  //const string = "Hello World";
   return (
     <div className="App">
     <Search onSearchChange={handleOnSearchChange}/>
-    <p>{string}</p>
     </div>
   );
 }
