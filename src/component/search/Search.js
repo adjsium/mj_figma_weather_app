@@ -59,7 +59,6 @@ const Search = ({onSearchChange}) => {
               ...theme.colors,
               primary50: 'orange', //option
               primary25: 'orange',
-              primary50: '#F0EEF1',
               primary: '#4d4d5h', // outline and current selection
               neutral0: '#4d4d5h',
               neutral20: '#F0EEF1', //line
