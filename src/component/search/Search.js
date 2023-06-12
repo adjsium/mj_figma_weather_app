@@ -5,7 +5,7 @@ const Search = ({onSearchChange}) => {
 
   const loadOptions = (inputValue) => {
     return fetch(
-      `${GEO_API_url}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
+      `${GEO_API_url}/cities?minPopulation=500000&namePrefix=${inputValue}`,
       geoApiOptions
     )
       .then((response) => response.json())
@@ -32,7 +32,7 @@ const Search = ({onSearchChange}) => {
     return (
       <AsyncPaginate 
           placeholder = "Search for City!"
-          debounceTimeout={600}
+          debounceTimeout={900}
           value = {search}
           onChange = {handleOnChange}
           loadOptions = {loadOptions}
@@ -59,7 +59,6 @@ const Search = ({onSearchChange}) => {
               ...theme.colors,
               primary50: 'orange', //option
               primary25: 'orange',
-              primary50: '#F0EEF1',
               primary: '#4d4d5h', // outline and current selection
               neutral0: '#4d4d5h',
               neutral20: '#F0EEF1', //line
