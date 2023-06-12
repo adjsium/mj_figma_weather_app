@@ -1,9 +1,10 @@
 body {
-  margin: 0;
+  margin: auto;
+  height: calc(100vh - 220px);
   font-family: "Roboto", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: -webkit-gradient(linear, right top, left bottom, from(#5D6F91), to(#2B3368)) fixed;
+  background: -webkit-gradient(linear,left bottom, right top,  from(#5980c9), to(#1c234d)) fixed;
 }
 
 code {

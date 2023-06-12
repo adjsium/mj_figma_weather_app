@@ -5,8 +5,6 @@ const CurrentWeather = ({ data }) => {
 
     const DynamicIcon = iconMap[data.current.weather[0].id];
     const nightDynamicIcon = nightIconMap[data.current.weather[0].id];
-    console.log('debug_id');
-    console.log(data.current.weather[0].id);
     return (
         <div className="weather">
             <div className="top">
@@ -43,7 +41,7 @@ const CurrentWeather = ({ data }) => {
                         <span className="parameter-value">{data.current.humidity}%</span>
                     </div>
                     {
-                        data.rain &&
+                        data.current.rain &&
                         <div className="parameter-row">
                             <span className="parameter-label">Rainfall</span>
                             <span className="parameter-value">{data.current.rain['1h']}mm</span>

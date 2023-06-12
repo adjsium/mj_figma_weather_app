@@ -21,7 +21,7 @@ const Forecast = ({ data }) => {
         <>
             
             <Row md={true}  className="forecast-row">
-                {Array.from(data.daily.slice(0, 6)).map((item, idx) => (
+                {Array.from(data.daily.slice(0, 5)).map((item, idx) => (
                     <Col key={idx}>
                         <Card>
                             {item.weather[0] &&
@@ -34,7 +34,7 @@ const Forecast = ({ data }) => {
                             <Card.Body>
                                 <Card.Title>{forecastDays[idx]}  </Card.Title>
                                 <Card.Text>
-                                <IconContext.Provider value={{  className: "forecast-weather-icon-small", title: "forecastWeatherIconSm", size: "16px" }}>
+                                <IconContext.Provider value={{color: "#F0EEF1",  className: "forecast-weather-icon-small", title: "forecastWeatherIconSm", size: "16px" }}>
                                     {item.weather[0].description}<br/>
                                     <span className="daily-detail-box"><CgArrowDown/>{Math.round(item.temp.min)}°C <br/></span>
                                     <span className="daily-detail-box"><CgArrowUp/>{Math.round(item.temp.max)}°C<br/></span>

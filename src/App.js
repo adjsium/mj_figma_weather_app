@@ -23,11 +23,7 @@ function App() {
       })
       .catch(console.log);
   }
-  //console.log(currentWeather);
-  console.log(forecast);
-  console.log('oneCall debug');
-  console.log(onecall);
-  //const string = "Hello World";
+
   return (
     <div className="App">
       <div className="main-container">
