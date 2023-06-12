@@ -1,8 +1,12 @@
 import "./forecast.css";
 import { IconContext } from "react-icons";
+import { WiHumidity} from "react-icons/wi";
+import { CgArrowUp, CgArrowDown } from "react-icons/cg";
 import { iconMap } from "../icon-map"
-import { Accordion, AccordionItem, AccordionItemButton, AccordionItemPanel } from "react-accessible-accordion";
-import { AccordionItemHeading } from "react-accessible-accordion";
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 
 const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
@@ -10,36 +14,38 @@ const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satu
 const Forecast = ({ data }) => {
     const dayInAWeek = null;
     // Date.parse(data.list[0].dt).getDay();
-    
-    console.log('debug');
-    console.log(data.list);
-    const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInAWeek));  
+
+
+    const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInAWeek));
     return (
         <>
-            <label className="title">Daily</label>
-            <Accordion allowZeroExpanded>
-                {data.list.splice(0, 5).map((item, idx) => (
-                    <AccordionItem key={idx}>
-                        <AccordionItemHeading>
-                            <AccordionItemButton>
-                                <div className="daily-item">
-                                    {item.weather[0] &&
-                                        <IconContext.Provider value={{ color: "orange", className: "forecast-weather-icon", title: "forecastWeatherIcon", size: "30px" }}>
-                                            {iconMap[item.weather[0].id]}
-                                        </IconContext.Provider>
-                                    }
-                                    <label className="datetime">{item.dt_txt}</label>
-                                    <label className="day">{forecastDays[idx]}</label>
-                                    <label className="description">{item.weather[0].description}</label>
-                                </div>
-                            </AccordionItemButton>
-                        </AccordionItemHeading>
-                        <AccordionItemPanel></AccordionItemPanel>
-                    </AccordionItem>
-
+            
+            <Row md={true}  className="forecast-row">
+                {Array.from(data.daily.slice(0, 6)).map((item, idx) => (
+                    <Col key={idx}>
+                        <Card>
+                            {item.weather[0] &&
+                                <IconContext.Provider value={{ color: "orange", className: "forecast-weather-icon", title: "forecastWeatherIcon", size: "38px" }}>
+                                    {iconMap[item.weather[0].id]}
+                                    <span className="daily-temp">{Math.round(item.temp.day)}°C</span>
+                                </IconContext.Provider>
+                            }
+                            
+                            <Card.Body>
+                                <Card.Title>{forecastDays[idx]}  </Card.Title>
+                                <Card.Text>
+                                <IconContext.Provider value={{  className: "forecast-weather-icon-small", title: "forecastWeatherIconSm", size: "16px" }}>
+                                    {item.weather[0].description}<br/>
+                                    <span className="daily-detail-box"><CgArrowDown/>{Math.round(item.temp.min)}°C <br/></span>
+                                    <span className="daily-detail-box"><CgArrowUp/>{Math.round(item.temp.max)}°C<br/></span>
+                                    <span className="daily-detail-box"><WiHumidity/>{item.humidity}%</span>
+                                    </IconContext.Provider>
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
                 ))}
-
-            </Accordion>
+            </Row>
         </>
     );
 }

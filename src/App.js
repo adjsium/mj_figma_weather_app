@@ -3,37 +3,37 @@ import React, { useState } from "react";
 import Search from './component/search/Search';
 import CurrentWeather from './component/current-weather/current-weather';
 import  Forecast  from './component/forecast/forecast';
-import { WEATHER_API_URL } from "./geoDBapi";
+import { ONE_CALL_URL } from "./geoDBapi";
 
 
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
+  const [onecall, setOneCall] = useState(null);
   const [forecast, setForecast] = useState(null);
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
-
-    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`);
-    const forecastFetch = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`);
-
-    Promise.all([currentWeatherFetch, forecastFetch])
+    const oneCallFetch = fetch(`${ONE_CALL_URL}/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`);
+    Promise.all([oneCallFetch])
       .then(async (response) => {
-        const weatherResponse = await response[0].json();
-        const forcastResponse = await response[1].json();
-        setCurrentWeather({ city: searchData.label, ...weatherResponse });
-        setForecast({ city: searchData.label, ...forcastResponse });
+        const oneCallResponse = await response[0].json();
+        setCurrentWeather({ city: searchData.label, ...oneCallResponse });
+        setForecast({ city: searchData.label, ...oneCallResponse });
+        setOneCall({ city: searchData.label, ...oneCallResponse });
       })
       .catch(console.log);
   }
-  console.log(currentWeather);
+  //console.log(currentWeather);
   console.log(forecast);
+  console.log('oneCall debug');
+  console.log(onecall);
   //const string = "Hello World";
   return (
     <div className="App">
-      <div className="container">
+      <div className="main-container">
         <Search onSearchChange={handleOnSearchChange} />
-        {currentWeather && <CurrentWeather data={currentWeather}/>}
-        {forecast && <Forecast data={forecast}/>}
+        {currentWeather && <CurrentWeather data={onecall}/>}
+        {forecast && <Forecast data={onecall}/>}
       </div>
 
     </div>
