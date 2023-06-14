@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       <div className="main-container">
         <Search onSearchChange={handleOnSearchChange} />
-        {currentWeather && <CurrentWeather data={onecall}/>}
+        {currentWeather ? <CurrentWeather data={onecall}/> :<div className='Start-text'>Search to Start</div>}
         {forecast && <Forecast data={onecall}/>}
       </div>
 
