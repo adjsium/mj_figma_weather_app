@@ -12,9 +12,9 @@ const WEEK_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satu
 
 
 const Forecast = ({ data }) => {
-    const dayInAWeek = null;
-    // Date.parse(data.list[0].dt).getDay();
-
+    
+    const localtime = new Date(data.daily[0].dt * 1000);
+    const dayInAWeek = localtime.getDay();
 
     const forecastDays = WEEK_DAYS.slice(dayInAWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInAWeek));
     return (
